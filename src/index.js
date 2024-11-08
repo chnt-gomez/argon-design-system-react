@@ -25,9 +25,12 @@ import "assets/scss/argon-design-system-react.scss?v1.1.0";
 
 import Index from "views/Index.js";
 import Landing from "views/examples/Landing.js";
-import Login from "views/examples/Login.js";
+import LoginView from "views/LoginView.js";
 import Profile from "views/examples/Profile.js";
-import Register from "views/examples/Register.js";
+import SignupView from "views/SignupView.js";
+
+import VerificationSuccessView from "views/VerificationSuccessView.js";
+import Terms from "views/Terms";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -36,10 +39,15 @@ root.render(
     <Routes>
       <Route path="/" exact element={<Index />} />
       <Route path="/landing-page" exact element={<Landing />} />
-      <Route path="/login-page" exact element={<Login />} />
+      <Route path="/login" exact element={<LoginView />} />
       <Route path="/profile-page" exact element={<Profile />} />
-      <Route path="/register-page" exact element={<Register />} />
+      <Route path="/signup" exact element={<SignupView />} />
       <Route path="*" element={<Navigate to="/" replace />} />
+
+      <Route path="/validation-success" exact element={<VerificationSuccessView />} />
+      <Route path="/validation-success" exact element={<VerificationSuccessView />} />
+
+      <Route path="/tos" exact element={<Terms />} />
     </Routes>
   </BrowserRouter>
 );
