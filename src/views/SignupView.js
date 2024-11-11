@@ -15,12 +15,13 @@
 */
 import React from "react";
 import withNavigation from "../withNavigation";
+import FloatingSuccess from "components/Alerts/FloatingSuccess";
+import SignupService from "services/SignupService";
 
 // reactstrap components
 import {
   Button,
   Card,
-  CardHeader,
   CardBody,
   FormGroup,
   Form,
@@ -49,6 +50,8 @@ class SignupView extends React.Component {
     email: "",
     password: "",
     errors: {},
+    showAlert: false,
+    alertMessage: "",
   };
 
   navigateToTos = (e) => {
@@ -122,19 +125,32 @@ class SignupView extends React.Component {
     this.setState({ passwordStrength: strength });
   };
 
+  handleDismissAlert = () => {
+    this.setState({showAlert: false});
+  };
+
+  handleSignup = async () => {
+    try {
+      const { email, password } = this.state;
+      await SignupService.signup(email, password);
+      this.setState({ showAlert: true, alertMessage: "Cuenta creada exitosamente" });
+    } catch (error) {
+      this.setState({ showAlert: true, alertMessage: "Error al crear la cuenta" });
+    }
+
+  }
+
   handleSubmit = (e) => {
     e.preventDefault();
     const errors = this.validateForm();
-    if (Object.keys(errors).length === 0) {
-      // Submit the form
-      console.log("Form submitted:", this.state);
-    } else {
+    if (Object.keys(errors).length !== 0) {
       this.setState({ errors });
-    }
+      return
+    } this.handleSignup();
   };
 
   render() {
-    const {email, password, errors, passwordStrength } = this.state;
+    const {email, password, errors, passwordStrength, showAlert, alertMessage } = this.state;
     return (
       <>
         <SimpleNavBar />
@@ -226,7 +242,9 @@ class SignupView extends React.Component {
             </Container>
           </section>
         </main>
+        
         <SimpleFooter />
+        {showAlert && <FloatingSuccess message={alertMessage} onDismiss={this.handleDismissAlert} />}
       </>
     );
   }

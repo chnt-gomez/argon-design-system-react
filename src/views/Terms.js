@@ -67,7 +67,7 @@ class Terms extends React.Component {
                         ¡Bienvenidos a Alkachof! Estamos encantados de tenerlos en nuestra plataforma. Por favor, lean cuidadosamente los siguientes términos de uso:
                         <br /><br />
                         Alkachof en fase beta: Alkachof es una plataforma en desarrollo (fase beta), por lo que pueden presentarse errores. Agradecemos su comprensión y paciencia mientras mejoramos la plataforma.
-                        <br /><br />
+                        <br /><br />q
                         Uso de datos e informacion privada: Alkachof no compartirá ni venderá la información personal de los usuarios a terceros. Alkachof usará los datos de los usuarios única y exclusivamente para mejorar la plataforma y ofrecer un mejor servicio.
                         <br /><br />
                         Uso de la plataforma: Los usuarios son libres de utilizar Alkachof para promocionar y vender sus productos y servicios siempre que estos sean legales conforme a las leyes de México. Está estrictamente prohibido publicar contenido pornográfico o exclusivo para mayores de 18 años. En Alkachof no podrás publicar servicios de acompañantes, prostitución, drogas, armas, órganos humanos, animales, servicios de hacking, piratería o apología del delíto, entre otros. Si tienes dudas sobre si tu producto o servicio es legal, por favor contáctanos.

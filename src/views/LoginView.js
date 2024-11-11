@@ -14,6 +14,8 @@
 */
 import React from "react";
 import withNavigation from "../withNavigation";
+import LoginService from "services/LoginService";
+import FloatingAlert from "components/Alerts/FloatingAlert";
 
 // reactstrap components
 import {
@@ -49,7 +51,9 @@ class LoginView extends React.Component {
     isForgotPasswordModalOpen: false,
     email: "",
     password: "",
-    errors: {}
+    errors: {},
+    showAlert: false,
+    alertMessage: "",
   };
 
   toggleForgotPasswordModal = () => {
@@ -65,6 +69,20 @@ class LoginView extends React.Component {
 
   handleInputChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
+  };
+
+  handleDismissAlert = () => {
+    this.setState({showAlert: false});
+  };
+
+  handleLogin = async () => {
+    try {
+      const {email, password} = this.state;
+      await LoginService.login(email, password);
+      this.props.navigate("/profile");
+    } catch (error) {
+      this.setState({showAlert: true, alertMessage: "Credenciales incorrectas."});
+    }
   };
 
   validateForm = () => {
@@ -86,15 +104,16 @@ class LoginView extends React.Component {
     if (Object.keys(errors).length > 0) {
         this.setState({errors});
         return;
-        }
-    };
+    }
+    this.handleLogin();
+  };
 
 
   render() {
-    const {email, password, errors} = this.state;
+    const {email, password, errors, showAlert} = this.state;
     return (
       <>
-        <SimpleNavBar />
+        <SimpleNavBar triggerError={showAlert}/>
         <main ref="main">
           <section className="section section-shaped section-lg">
             <div className="shape shape-style-1 bg-gradient-default">
@@ -107,6 +126,7 @@ class LoginView extends React.Component {
               <span />
               <span />
             </div>
+          
             <Container className="pt-lg-7">
               <Row className="justify-content-center">
                 <Col lg="5">
@@ -200,6 +220,7 @@ class LoginView extends React.Component {
           </section>
         </main>
         <SimpleFooter />
+        {showAlert && <FloatingAlert message="Credenciales incorrectas" onDismiss={this.handleDismissAlert} />}
       </>
     );
   }
