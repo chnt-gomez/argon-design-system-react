@@ -62,12 +62,12 @@ class VerificationErrorView extends React.Component {
               <Row className="justify-content-center">
                 <Col lg="5">
                   <Card className="bg-secondary shadow border-0">
-                  <CardHeader className="bg-white pb-5">
+                  <CardHeader className="bg-danger pb-5">
                       <div className="text-muted text-center mb-3">
                         <h1 classname="display-1">
-                            <i className="ni ni-fat-remove" style={{ color: 'red'}}/>
+                            <i className="ni ni-fat-remove" style={{ color: 'white'}}/>
                         </h1>
-                        <h1 classname="display-1">
+                        <h1 classname="display-1" style={{ color: 'white'}}>
                             Ups. Algo salió mal
                         </h1>
                       </div>

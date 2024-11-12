@@ -14,19 +14,13 @@
 
 */
 import React from "react";
+import withNavigation from "../withNavigation";
 
 // reactstrap components
 import {
-  Button,
   Card,
   CardHeader,
   CardBody,
-  FormGroup,
-  Form,
-  Input,
-  InputGroupAddon,
-  InputGroupText,
-  InputGroup,
   Container,
   Row,
   Col,
@@ -41,7 +35,17 @@ class VerificationSuccessView extends React.Component {
     document.documentElement.scrollTop = 0;
     document.scrollingElement.scrollTop = 0;
     this.refs.main.scrollTop = 0;
-  }
+
+    setTimeout(() => {
+      this.props.navigate("/login");
+    }, 5000);
+
+  };
+
+  handleManualRedirect = () => {
+    this.props.navigate("/login");
+  };
+
   render() {
     return (
       <>
@@ -62,12 +66,12 @@ class VerificationSuccessView extends React.Component {
               <Row className="justify-content-center">
                 <Col lg="5">
                   <Card className="bg-secondary shadow border-0">
-                  <CardHeader className="bg-white pb-5">
+                  <CardHeader className="bg-success pb-5">
                       <div className="text-muted text-center mb-3">
                         <h1 classname="display-1">
-                            <i className="ni ni-check-bold" style={{ color: 'green'}}/>
+                            <i className="ni ni-check-bold" style={{ color: 'white'}}/>
                         </h1>
-                        <h1 classname="display-1">
+                        <h1 classname="display-1" style={{ color: 'white'}}>
                             Cuenta verificada
                         </h1>
                       </div>
@@ -75,6 +79,13 @@ class VerificationSuccessView extends React.Component {
                     <CardBody className="px-lg-5 py-lg-5">
                       <div className="text-center text-muted mb-4">
                         <small>En un momento podrás iniciar sesión...</small>
+                      </div>
+                      <div className="text-center">
+                        <small>
+                          <a href="#" onClick={(e) => { e.preventDefault(); this.handleManualRedirect(); }}>
+                            Haz clic aquí si no eres redirigido automáticamente
+                          </a>
+                        </small>
                       </div>
                     </CardBody>
                   </Card>
@@ -89,4 +100,4 @@ class VerificationSuccessView extends React.Component {
   }
 }
 
-export default VerificationSuccessView;
+export default withNavigation(VerificationSuccessView);
