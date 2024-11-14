@@ -19,24 +19,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 // JavaScript plugin that hides or shows a component based on your scroll
 import Headroom from "headroom.js";
+import { ReactComponent as AlkachofFullLogo } from "assets/img/brand/alkachof_full.svg";
 // reactstrap components
 import {
-  Button,
-  UncontrolledCollapse,
-  DropdownMenu,
-  DropdownItem,
-  DropdownToggle,
-  UncontrolledDropdown,
-  Media,
   NavbarBrand,
   Navbar,
-  NavItem,
-  NavLink,
-  Nav,
   Container,
-  Row,
-  Col,
-  UncontrolledTooltip,
 } from "reactstrap";
 
 class SimpleNavBar extends React.Component {
@@ -73,10 +61,7 @@ class SimpleNavBar extends React.Component {
           >
             <Container>
               <NavbarBrand className="mr-lg-5" to="/" tag={Link}>
-                <img
-                  alt="..."
-                  src={require("assets/img/brand/argon-react-white.png")}
-                />
+                <AlkachofFullLogo alt="Alkachof Logo" style={{ height: "80px", width: "auto" }} />
               </NavbarBrand>
             </Container>
           </Navbar>

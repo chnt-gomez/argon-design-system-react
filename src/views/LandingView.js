@@ -17,7 +17,6 @@
 */
 import React from "react";
 // nodejs library that concatenates classes
-import classnames from "classnames";
 
 // reactstrap components
 import {
@@ -26,22 +25,12 @@ import {
   Card,
   CardBody,
   CardImg,
-  FormGroup,
-  Input,
-  InputGroupAddon,
-  InputGroupText,
-  InputGroup,
   Container,
   Row,
   Col,
 } from "reactstrap";
 
-// core components
-import CardsFooter from "components/Footers/CardsFooter.js";
-
-// index page sections
-import Download from "./IndexSections/Download.js";
-import LandingNavBar from "components/Navbars/LandingNavBar.js";
+import SimpleNavBar from "components/Navbars/SimpleNavBar";
 
 class LandingView extends React.Component {
   state = {
@@ -57,7 +46,7 @@ class LandingView extends React.Component {
          "instalación de pisos", "reparación de techos", "fontanería", 
          "soldadura", "instalación de ventanas", "mantenimiento", 
          "lavado de autos", "lavado de alfombras", "lo que sea"],
-    itemSelection: 0
+    itemSelection: 1
 
 
   };
@@ -75,7 +64,7 @@ class LandingView extends React.Component {
     const { items, randomIndex } = this.state;
     return (
       <>
-        <LandingNavBar />
+        <SimpleNavBar />
         <main ref="main">
           <div className="position-relative">
             {/* shape Hero */}
@@ -105,9 +94,13 @@ class LandingView extends React.Component {
                       <div className="btn-wrapper">
                         <Button
                           color="info"
-                          href="https://demos.creative-tim.com/argon-design-system-react/#/documentation/alerts?ref=adsr-landing-page"
                         >
                           <span className="btn-inner--text">Crea una cuenta gratis</span>
+                        </Button>
+                        <Button
+                          color="white"
+                        >
+                          <span className="btn-inner--text">Inicia sesión</span>
                         </Button>
                       </div>
                     </Col>
@@ -198,7 +191,7 @@ class LandingView extends React.Component {
                   <img
                     alt="..."
                     className="img-fluid floating"
-                    src={require("assets/img/theme/promo-1.png")}
+                    src={require("assets/img/theme/alka_user.webp")}
                   />
                 </Col>
                 <Col className="order-md-1" md="6">
@@ -274,7 +267,7 @@ class LandingView extends React.Component {
                   <Card className="bg-default shadow border-0">
                     <CardImg
                       alt="..."
-                      src={require("assets/img/theme/img-1-1200x1000.jpg")}
+                      src={require("assets/img/theme/alka_robot.webp")}
                       top
                     />
                     <blockquote className="card-blockquote">
@@ -338,7 +331,7 @@ class LandingView extends React.Component {
                   <div className="d-flex px-3">
                     <div>
                       <div className="icon icon-lg icon-shape bg-gradient-white shadow rounded-circle text-primary">
-                        <i className="ni ni-building text-primary" />
+                        <i className="fa fa-heart" />
                       </div>
                     </div>
                     <div className="pl-4">
@@ -372,7 +365,7 @@ class LandingView extends React.Component {
                       <div className="d-flex px-3">
                         <div>
                           <div className="icon icon-shape bg-gradient-warning rounded-circle text-white">
-                            <i className="ni ni-active-40" />
+                            <i className="fa fa-handshake-o" />
                           </div>
                         </div>
                         <div className="pl-4">
@@ -436,7 +429,6 @@ class LandingView extends React.Component {
                         block
                         className="btn-white"
                         color="default"
-                        href="https://www.creative-tim.com/product/argon-design-system-react?ref=adsr-landing-page"
                         size="lg"
                       >
                         Contacto
